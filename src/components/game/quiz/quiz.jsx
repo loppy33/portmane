@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Win from './win/win';
 
 import haha from './assets/win.mp3';
+import lose from './assets/lose.mp3';
 import useSound from 'use-sound';
 
 function Quiz(props) {
@@ -11,6 +12,7 @@ function Quiz(props) {
     const [lvl, setLvl] = useState(1);
     const [mode, setMode] = useState('')
     const [playHaha] = useSound(haha)
+    const [playLose] = useSound(lose)
     // Вопрос, правильный ответ, варианты a, b, c, d
     const questions = {
 
@@ -107,7 +109,7 @@ function Quiz(props) {
     return (
         <div className="Quiz">
             {mode === 'lose' ? <>
-                {playHaha()}
+                {playLose()}
 
                 <Lose duty={duty} setDuty={setDuty} setLvl={setLvl} setMode={setMode}></Lose></> : ''}
             {duty === 0 ? (
